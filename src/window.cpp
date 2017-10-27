@@ -1,6 +1,9 @@
 #include "window.h"
 
 bool Window::running = false;
+SDL_Renderer* Window::renderer = NULL;
+SDL_Window* Window::window = NULL;
+AppStateMachine* Window::appStateMachine = NULL;
 
 Window::Window(int width_, int height_) : width(width_), height(height_) {
 	window = NULL;
@@ -35,17 +38,23 @@ bool Window::init() {
 
 	running = true;
 
+	appStateMachine = new AppStateMachine();
+
+	appStateMachine->changeState(new MainMenuState());
+
 	return true;
 }
 
 void Window::render() {
 	SDL_RenderClear(renderer);
 
+	appStateMachine->render();
+
 	SDL_RenderPresent(renderer);
 }
 
 void Window::update() {
-
+	appStateMachine->update();
 }
 
 

@@ -7,6 +7,8 @@
 #include <iostream>
 
 #include "inputhandler.h"
+#include "appstatemachine.h"
+#include "mainmenustate.h"
 
 class Window {
 public:
@@ -22,13 +24,15 @@ public:
 
 	void quit() { running = false; }
 
-	SDL_Renderer* getRenderer() const { return renderer; }
-	SDL_Window* getWindow() const { return window; }
+	static SDL_Renderer* getRenderer() { return renderer; }
+	static SDL_Window* getWindow() { return window; }
 	int getWindowWidth() const { return width; }
 	int getWindowHeight() const { return height; }
 
 	bool isRunning() const { return running; }
 	static void quitApplication() { running = false; }
+	
+	static AppStateMachine* getAppStateMachine() { return appStateMachine; }
 
 private:
 	int const width;
@@ -37,8 +41,10 @@ private:
 	// Is the application running?
 	static bool running;
 
-	SDL_Renderer* renderer;
-	SDL_Window* window;
+	static SDL_Renderer* renderer;
+	static SDL_Window* window;
+
+	static AppStateMachine* appStateMachine;
 };
 
 #endif // WINDOW_H
