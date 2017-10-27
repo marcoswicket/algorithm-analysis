@@ -6,7 +6,7 @@ SRCDIR = ./src
 LDIR = ./lib
 BFOLDER = ./build
 
-CFLAGS=-I$(INCDIR) -lSDL2
+CFLAGS=-I$(INCDIR) -lSDL2 -lSDL2_image
 
 DEPS = $(patsubst %,$(INCDIR)/%,$(wildcard $(INCDIR)/*.h))
 OBJ = $(patsubst $(wildcard $(SRCDIR)/*.cpp)/%.cpp,$(OBJDIR)/%.o,$(wildcard $(SRCDIR)/*.cpp))
