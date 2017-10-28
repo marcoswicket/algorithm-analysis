@@ -6,19 +6,13 @@
 
 #include "vector2d.h"
 #include "window.h"
+#include "types.h"
 
 enum button_state { 
 	MOUSE_OFF = 1,
 	MOUSE_ON = 2,
 	CLICKED = 3
 };
-
-typedef struct ButtonColor {
-	Uint8 r;
-	Uint8 g;
-	Uint8 b;
-	Uint8 a;
-} ButtonColor;
 
 class MenuButton {
 public:
@@ -28,6 +22,7 @@ public:
 
 	void update();
 	void render();
+	void clean();
 private:
 	Vector2D* position;
 	int width, height;
@@ -35,7 +30,7 @@ private:
 
 	void (*callback)();
 
-	ButtonColor color;
+	Color color;
 
 	SDL_Rect rect;
 };

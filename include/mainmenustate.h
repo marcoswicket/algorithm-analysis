@@ -5,6 +5,7 @@
 #include "appstate.h"
 #include "window.h"
 #include "menubutton.h"
+#include "convexhullstate.h"
 
 class MenuButton;
 

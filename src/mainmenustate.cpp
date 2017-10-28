@@ -10,6 +10,7 @@ void MainMenuState::menuToPlay() {
 	// TODO: Need to properly create a new state;
 	//Window::getAppStateMachine()->changeState();
 	std::cout << "I'm working bro relax" << std::endl;
+	Window::getAppStateMachine()->changeState(new ConvexHullState());
 }
 
 void MainMenuState::exitFromMenu() {
@@ -46,6 +47,12 @@ bool MainMenuState::onEnter() {
 
 bool MainMenuState::onExit() {
 	// TODO: Free all things
+	for(int i = 0 ; i < menuButtons.size() ; i++) {
+		menuButtons.back()->clean();
+		menuButtons.pop_back();
+	}
+	menuButtons.clear();
+	std::cout << "Exiting MenuState" << std::endl;
 	return true;
 }
 

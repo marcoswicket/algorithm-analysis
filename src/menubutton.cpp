@@ -22,12 +22,16 @@ MenuButton::MenuButton(void (*callback_)(), int x, int y, Uint8 r, Uint8 g, Uint
 void MenuButton::update() {
 	// Check mouse collision
 	Vector2D *mPos = InputHandler::Instance()->getMousePosition();
+
+	if(state == CLICKED && !InputHandler::Instance()->getMouseButtonState(LEFT)) {
+		state = MOUSE_ON;
+		callback();
+	}
 	if(mPos->getX() >= rect.x && mPos->getX() <= rect.x + rect.w 
 			&& mPos->getY() >= rect.y && mPos->getY() <= rect.y + rect.h) {
 		state = MOUSE_ON;
 		if(InputHandler::Instance()->getMouseButtonState(LEFT)) {
 			state = CLICKED;
-			callback();
 		}
 	} else {
 		state = MOUSE_OFF;
@@ -38,9 +42,16 @@ void MenuButton::update() {
 void MenuButton::render() {
 	if(state == MOUSE_OFF) {
 		SDL_SetRenderDrawColor(Window::getRenderer(), color.r, color.g, color.b, color.a);
-	} else {
-		SDL_SetRenderDrawColor(Window::getRenderer(), color.r*1.2, color.g*1.2, color.b*1.2, 255);
+	} else if(state == MOUSE_ON) {
+		SDL_SetRenderDrawColor(Window::getRenderer(), color.r*1.2, color.g*1.2, color.b*1.2, color.a * 1.2);
+	} else if (state == CLICKED) {
+		SDL_SetRenderDrawColor(Window::getRenderer(), color.r*0.2, color.g*0.2, color.b*0.2, color.a);
 	}
 
 	SDL_RenderFillRect(Window::getRenderer(), &rect);
+}
+
+void MenuButton::clean() {
+	delete position;
+	callback = NULL;
 }
