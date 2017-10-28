@@ -19,6 +19,7 @@ public:
 
 	void setX(float x_) { x = x_; }
 	void setY(float y_) { y = y_; }
+	void setPosition(float x_, float y_) { x = x_; y = y_; }
 
 	int length() { return sqrt(x * x + y * y); }
 

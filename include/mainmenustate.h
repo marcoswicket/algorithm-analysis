@@ -4,6 +4,9 @@
 #include <vector>
 #include "appstate.h"
 #include "window.h"
+#include "menubutton.h"
+
+class MenuButton;
 
 class MainMenuState : public AppState {
 public:
@@ -20,10 +23,14 @@ public:
 private:
 	//virtual void setCallbacks(const std::vector<Callback>& callbacks);
 
+	std::vector<MenuButton*> menuButtons;
+
 	static void menuToPlay();
 	static void exitFromMenu();
 
 	static const std::string menuID;
+
+	Uint8 bgColor[4];
 };
 
 #endif // MAINMENUSTATE_H

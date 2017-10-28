@@ -26,8 +26,8 @@ public:
 
 	static SDL_Renderer* getRenderer() { return renderer; }
 	static SDL_Window* getWindow() { return window; }
-	int getWindowWidth() const { return width; }
-	int getWindowHeight() const { return height; }
+	static int const getWindowWidth() { return width; }
+	static int const getWindowHeight(){ return height; }
 
 	bool isRunning() const { return running; }
 	static void quitApplication() { running = false; }
@@ -35,8 +35,8 @@ public:
 	static AppStateMachine* getAppStateMachine() { return appStateMachine; }
 
 private:
-	int const width;
-	int const height;
+	static int width;
+	static int height;
 
 	// Is the application running?
 	static bool running;

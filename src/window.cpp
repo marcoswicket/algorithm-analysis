@@ -1,13 +1,18 @@
 #include "window.h"
 
+int Window::width = 600;
+int Window::height = 480;
 bool Window::running = false;
 SDL_Renderer* Window::renderer = NULL;
 SDL_Window* Window::window = NULL;
 AppStateMachine* Window::appStateMachine = NULL;
 
-Window::Window(int width_, int height_) : width(width_), height(height_) {
+Window::Window(int width_, int height_){
 	window = NULL;
 	renderer = NULL;
+
+	width = width_;
+	height = height_;
 	if(!init()) { exit(1); }
 }
 
