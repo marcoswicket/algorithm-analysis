@@ -4,6 +4,7 @@
 #include <vector>
 #include "appstate.h"
 
+// Class for managing the App states
 class AppStateMachine {
 public:
 	AppStateMachine(){}

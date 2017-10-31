@@ -8,6 +8,8 @@
 #include "window.h"
 #include "types.h"
 
+// Generic node structure for the algorithms presented
+// in class;
 class Node {
 public:
 	Node(Vector2D* position_, int width_, int height_);

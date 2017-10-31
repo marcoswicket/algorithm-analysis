@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 #include <iostream>
 
+// Type for Color
 typedef struct Color { 
 	Uint8 r;
 	Uint8 g;

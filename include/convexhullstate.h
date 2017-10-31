@@ -14,6 +14,7 @@ enum state {
     RELEASE = 2
 };
 
+// In theory the main state that will contain the convex hull algorithm
 class Node;
 class ConvexHullState : public AppState {
 public:

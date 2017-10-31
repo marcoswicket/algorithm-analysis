@@ -9,6 +9,7 @@
 
 class MenuButton;
 
+// First screen state
 class MainMenuState : public AppState {
 public:
 	virtual ~MainMenuState(){}

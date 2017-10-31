@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 
+// Virtual class for App States
 class AppState {
 public:
 	virtual ~AppState(){}
