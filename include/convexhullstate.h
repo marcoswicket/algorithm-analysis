@@ -2,11 +2,17 @@
 #define CONVEXHULL_H
 
 #include <iostream>
+#include <vector>
 
 #include "appstate.h"
 #include "window.h"
 #include "node.h"
 #include "inputhandler.h"
+
+enum state {
+    CLICK = 1,
+    RELEASE = 2
+};
 
 class Node;
 class ConvexHullState : public AppState {
@@ -27,6 +33,7 @@ private:
 
 	Color bgColor;
 
+    int state;
 };
 
 #endif // CONVEXHULL_H

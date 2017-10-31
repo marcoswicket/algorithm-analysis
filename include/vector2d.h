@@ -14,8 +14,8 @@ public:
 
 	Vector2D(float x_, float y_) : x(x_), y(y_){}
 
-	const float getX() { return x; }
-	const float getY() { return y; }
+    float getX() { return x; }
+	float getY() { return y; }
 
 	void setX(float x_) { x = x_; }
 	void setY(float y_) { y = y_; }

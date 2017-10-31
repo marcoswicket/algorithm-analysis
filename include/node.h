@@ -2,6 +2,7 @@
 #define NODE_H
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 
 #include "vector2d.h"
 #include "window.h"
@@ -9,12 +10,13 @@
 
 class Node {
 public:
-	Node();
+	Node(Vector2D* position_, int width_, int height_);
 	~Node();
 	
 	void update();
 	void render();
 
+    bool collision(int x, int y);
 private:
 	Vector2D* position;
 	int width, height;

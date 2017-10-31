@@ -19,14 +19,14 @@ void MainMenuState::exitFromMenu() {
 
 void MainMenuState::update() {
 	// TODO: Properly make colision with the buttons
-	for(int i = 0 ; i < menuButtons.size() ; i++) {
+	for(int i = 0 ; i < (int) menuButtons.size() ; i++) {
 		menuButtons[i]->update();
 	}
 }
 
 void MainMenuState::render() {
 	// TODO: Render all objects related to this thing
-	for(int i = 0 ; i < menuButtons.size() ; i++) {
+	for(int i = 0 ; i < (int) menuButtons.size() ; i++) {
 		menuButtons[i]->render();
 	}
 	SDL_SetRenderDrawColor(Window::getRenderer(), bgColor[0], bgColor[1], bgColor[2], bgColor[3]);
@@ -47,7 +47,7 @@ bool MainMenuState::onEnter() {
 
 bool MainMenuState::onExit() {
 	// TODO: Free all things
-	for(int i = 0 ; i < menuButtons.size() ; i++) {
+	for(int i = 0 ; i < (int) menuButtons.size() ; i++) {
 		menuButtons.back()->clean();
 		menuButtons.pop_back();
 	}
