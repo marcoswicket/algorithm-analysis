@@ -24,15 +24,16 @@ public:
 
 	void quit() { running = false; }
 
+    // Global utilities
 	static SDL_Renderer* getRenderer() { return renderer; }
-	static SDL_Window* getWindow() { return window; }
-	static int const getWindowWidth() { return width; }
-	static int const getWindowHeight(){ return height; }
+	const static SDL_Window* getWindow() { return window; }
+	static int getWindowWidth() { return width; }
+	static int getWindowHeight(){ return height; }
+	static AppStateMachine* getAppStateMachine() { return appStateMachine; }
 
+    // State methods
 	bool isRunning() const { return running; }
 	static void quitApplication() { running = false; }
-	
-	static AppStateMachine* getAppStateMachine() { return appStateMachine; }
 
 private:
 	static int width;

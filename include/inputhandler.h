@@ -7,6 +7,7 @@
 
 #include "vector2d.h"
 
+// Mouse states
 enum mouse_buttons {
 	LEFT = 0,
 	MIDDLE = 1,
@@ -16,6 +17,7 @@ enum mouse_buttons {
 // Singleton
 class InputHandler {
 public:
+    // Singleton instance access
 	static InputHandler* Instance() {
 		if(instance == 0) {
 			instance = new InputHandler();
@@ -25,6 +27,7 @@ public:
 
 	void reset();
 
+    // Regular states
 	void update();
 	void clean();
 
@@ -45,6 +48,7 @@ private:
 	std::vector<bool> mouseButtonStates;
 	Vector2D* mousePosition;
 
+    // Singleton instance
 	static InputHandler* instance;
 };
 

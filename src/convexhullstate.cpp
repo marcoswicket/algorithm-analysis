@@ -3,6 +3,7 @@
 const std::string ConvexHullState::convexID = "CONVEX";
 
 void ConvexHullState::update() {
+    // Create a point by clicking in the screen with the left mouse button
     if(InputHandler::Instance()->getMouseButtonState(LEFT) && state == RELEASE) {
         int x = InputHandler::Instance()->getMousePosition()->getX();
         int y = InputHandler::Instance()->getMousePosition()->getY();
@@ -12,6 +13,7 @@ void ConvexHullState::update() {
         state = RELEASE;
     }
 
+    // Delete a point by clicking on top of it with right mouse button
     if(InputHandler::Instance()->getMouseButtonState(RIGHT)) {
         for(int i = 0 ; i < (int) nodes.size() ; i++) {
            int x = InputHandler::Instance()->getMousePosition()->getX();
