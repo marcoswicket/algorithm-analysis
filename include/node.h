@@ -8,6 +8,12 @@
 #include "window.h"
 #include "types.h"
 
+enum NodeColor {
+	Red,
+	Blue,
+	Purple
+};
+
 // Generic node structure for the algorithms presented
 // in class;
 class Node {
@@ -17,6 +23,14 @@ public:
 	
 	void update();
 	void render();
+
+	void changeColor(NodeColor nodeColor);
+
+	float getX(){ return position->getX() + (width/2); }
+	float getY(){ return position->getY() + (height/2); }
+
+	int getWidth() { return width; }
+	int getHeight() { return height; }
 
     bool collision(int x, int y);
 private:
