@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include <vector>
+#include <stack>
+#include <algorithm>
+#include <functional>
 #include <SDL2/SDL.h>
 
 #include "appstate.h"
@@ -13,6 +16,11 @@
 enum state {
     CLICK = 1,
     RELEASE = 2
+};
+
+enum algorithm {
+	JARVIS = 1,
+	GRAHAM = 2
 };
 
 // In theory the main state that will contain the convex hull algorithm
@@ -28,6 +36,7 @@ public:
 	virtual bool onExit();
 
 	virtual std::string getStateID() const { return convexID; }
+	bool operator()(Node* p, Node* q);
 private:
 	// Jarvis algorithm methods and variables
 	void JarvisAlgorithm();
@@ -36,13 +45,30 @@ private:
 		q; // point we are searching counterclockwise
 	int jarvisFlag; 	// Flag for jarvis state
 	int step;	// Step we are in the algorithm
-	std::vector<Node*> hull;
 	
-	
+	// GrahamScan methods and variables
+	void GrahamScan();
+	int distance(Node* p, Node* q);
+	int leastY; 	// Least y
+
 	// Utility
 	int orientation(Node* p, Node* q, Node* r);
+	void paintNodes(); // Set nodes color based on state
+	void reset(); // Reset the screen
+	void cleanNotSelected(); // Return the not selected nodes to their color
+	void clean_nodes();
+	void clean_hull(); 
+	void sort(); // Sort nodes by their polar angle
+	int j;
 
+	// Which algorithm are we executing
+	int algorithm;
+
+	// Nodes and Hull data structures
 	std::vector<Node*> nodes;
+	std::vector<Node*> hull;
+
+	// Background color
 	Color bgColor;
 
 	// Are we doing operations?

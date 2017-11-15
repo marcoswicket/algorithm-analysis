@@ -11,7 +11,8 @@
 enum NodeColor {
 	Red,
 	Blue,
-	Purple
+	Purple,
+	Green
 };
 
 // Generic node structure for the algorithms presented
@@ -23,6 +24,7 @@ public:
 	
 	void update();
 	void render();
+	void clean();
 
 	void changeColor(NodeColor nodeColor);
 
@@ -33,6 +35,8 @@ public:
 	int getHeight() { return height; }
 
     bool collision(int x, int y);
+
+
 private:
 	Vector2D* position;
 	int width, height;

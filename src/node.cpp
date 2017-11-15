@@ -13,17 +13,10 @@ Node::Node(Vector2D* position_, int width_, int height_) :
 Node::~Node() {
     delete(position);
 }
-
-bool Node::collision(int x, int y) {
-    if(position->getX() <= x && position->getX() + width >= x 
-            && position->getY() <= y && position->getY() + height >= y) {
-        return true;
-    }
-
-    return false;
+void Node::update() {
 }
 
-void Node::update() {
+void Node::clean(){
 }
 
 void Node::render() {
@@ -50,4 +43,21 @@ void Node::changeColor(NodeColor nodeColor) {
         color.b = 0;
         color.a = 255;
     }
+	if(nodeColor == Green) {
+		color.r = 0;
+		color.g = 175;
+		color.b = 0;
+		color.a = 255;
+	}
 }
+
+bool Node::collision(int x, int y) {
+    if(position->getX() <= x && position->getX() + width >= x 
+            && position->getY() <= y && position->getY() + height >= y) {
+        return true;
+    }
+
+    return false;
+}
+
+
