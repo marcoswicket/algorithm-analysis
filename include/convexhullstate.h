@@ -20,7 +20,8 @@ enum state {
 
 enum algorithm {
 	JARVIS = 1,
-	GRAHAM = 2
+	GRAHAM = 2,
+	QUICKHULL = 3
 };
 
 // In theory the main state that will contain the convex hull algorithm
@@ -37,6 +38,7 @@ public:
 
 	virtual std::string getStateID() const { return convexID; }
 	bool operator()(Node* p, Node* q);
+
 private:
 	// Jarvis algorithm methods and variables
 	void JarvisAlgorithm();
@@ -50,6 +52,16 @@ private:
 	void GrahamScan();
 	int distance(Node* p, Node* q);
 	int leastY; 	// Least y
+
+	// Quickhull
+	void QuickHull();
+	void QuickHullExecution(Node* p1, Node* p2, int side); 
+	int findSide(Node* p, Node* q, Node* r); // Close to orientation
+	int lineDistance(Node* p, Node* q, Node* r); // Distance between the point and the line between p and q
+	void changeIndex();
+	int max_x;
+	int min_x;
+	int index[2];
 
 	// Utility
 	int orientation(Node* p, Node* q, Node* r);

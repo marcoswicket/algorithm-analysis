@@ -36,7 +36,6 @@ public:
 
     bool collision(int x, int y);
 
-
 private:
 	Vector2D* position;
 	int width, height;
