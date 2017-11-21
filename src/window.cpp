@@ -38,7 +38,8 @@ bool Window::init() {
 	// Vsync renderer
 	renderer = SDL_CreateRenderer(window, -1, 0);
 	SDL_SetRenderDrawColor(renderer, 0x00, 0x53, 0xAA, 0xFF);
-	
+	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+
 	if(!IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) { return false; }
 
 	running = true;

@@ -42,6 +42,9 @@ bool MainMenuState::onEnter() {
 	// Thats a long line, just adding the buttons to our button vector
 	menuButtons.push_back(new MenuButton(&menuToPlay, Window::getWindowWidth() * 0.105, Window::getWindowHeight() * 0.87 - 50, 243, 129, 129, 255));
 	menuButtons.push_back(new MenuButton(&exitFromMenu, Window::getWindowWidth() * 0.58, Window::getWindowHeight() * 0.87 - 50, 243, 129, 129, 255));
+
+	menuButtons[0]->loadTexture("assets/start.png");
+	menuButtons[1]->loadTexture("assets/quit.png");
 	return true;
 }
 

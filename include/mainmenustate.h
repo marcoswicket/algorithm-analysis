@@ -2,6 +2,8 @@
 #define MAINMENUSTATE_H
 
 #include <vector>
+#include <SDL2/SDL_ttf.h>
+
 #include "appstate.h"
 #include "window.h"
 #include "menubutton.h"

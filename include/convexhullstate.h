@@ -12,6 +12,7 @@
 #include "window.h"
 #include "node.h"
 #include "inputhandler.h"
+#include "menubutton.h"
 
 enum state {
     CLICK = 1,
@@ -26,6 +27,7 @@ enum algorithm {
 
 // In theory the main state that will contain the convex hull algorithm
 class Node;
+class MenuButton;
 class ConvexHullState : public AppState {
 public:
 	virtual ~ConvexHullState(){}
@@ -62,6 +64,7 @@ private:
 	int max_x;
 	int min_x;
 	int index[2];
+	std::vector<MenuButton*> menuButtons;
 
 	// Utility
 	int orientation(Node* p, Node* q, Node* r);
@@ -89,7 +92,7 @@ private:
 
 	// Mouse flags
     int stateLeft, stateRight;
-	
+
 	static const std::string convexID;
 };
 

@@ -83,6 +83,7 @@ void ConvexHullState::update() {
 		Window::quitApplication();
 	}
 
+	menuButtons[0]->update();
 }
 
 void ConvexHullState::render() {
@@ -106,7 +107,11 @@ void ConvexHullState::render() {
 		SDL_RenderDrawLine(Window::getRenderer(), 
 				hull[0]->getX(), hull[0]->getY(),
 				hull[i]->getX(), hull[i]->getY());
-	} 
+	}
+	for(int i = 0 ; i < menuButtons.size() ; i++) {
+		menuButtons[i]->render();
+		//std::cout << "Rendering button" << std::endl;
+	}
 	SDL_SetRenderDrawColor(Window::getRenderer(), bgColor.r, bgColor.g, bgColor.b, bgColor.a);
 }
 
@@ -134,6 +139,10 @@ bool ConvexHullState::onEnter() {
 	algorithm = 0;
 	j = 0;
 
+	menuButtons.push_back(new MenuButton(NULL, Window::getWindowWidth() - Window::getWindowWidth()/4, 0, 243, 129, 129, 175, Window::getWindowWidth()/4, Window::getWindowHeight()/4));
+	menuButtons[0]->loadTexture("assets/instructions.png");
+	menuButtons[0]->setTextureAlpha(175);
+
 	return true;
 }
 
@@ -141,6 +150,12 @@ bool ConvexHullState::onExit() {
 	// TODO: Free, cleanup and state change
 	clean_hull();
 	clean_nodes();
+	for(int i = 0 ; i < menuButtons.size() ; i++) {
+		menuButtons.back()->clean();
+		menuButtons.pop_back();
+	}
+	menuButtons.clear();
+	
 	return true;
 }
 
