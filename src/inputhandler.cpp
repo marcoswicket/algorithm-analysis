@@ -59,8 +59,8 @@ void InputHandler::update() {
 bool InputHandler::isKeyDown(SDL_Scancode key) const {
 	if(keyState != 0) {
 		if(keyState[key] == 1) return true;
-		else return false;
 	}
+	return false;
 }
 
 bool InputHandler::getMouseButtonState(int buttomNumber) const {
